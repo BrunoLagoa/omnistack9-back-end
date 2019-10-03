@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const path = require("path");
 
 // Importando rotas
 const routes = require("./routes");
@@ -22,6 +23,9 @@ app.use(cors());
 
 // Informando que os retornos serao em formato json
 app.use(express.json());
+
+// Criando a route file virtual
+app.use("/files", express.static(path.resolve(__dirname, "..", "uploads")));
 
 // rotas de acesso
 app.use(routes);
