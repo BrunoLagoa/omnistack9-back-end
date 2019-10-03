@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 // Importando rotas
 const routes = require("./routes");
@@ -15,6 +16,9 @@ mongoose.connect(
     useUnifiedTopology: true
   }
 );
+
+// Liberando acesso a api
+app.use(cors());
 
 // Informando que os retornos serao em formato json
 app.use(express.json());
